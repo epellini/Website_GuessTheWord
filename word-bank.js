@@ -316,12 +316,12 @@ let wordList = [
             "hint": "Line where sky meets the Earth"
         },
         {
-            "word": "kayak",
-            "hint": "Narrow watercraft"
-        },
-        {
             "word": "legend",
             "hint": "Traditional story of historical events"
+        },
+        {
+            "word": "kayak",
+            "hint": "Narrow watercraft"
         },
         {
             "word": "midnight",
