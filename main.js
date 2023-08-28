@@ -21,8 +21,8 @@ function newGame() {
     const randomWord = wordList[Math.floor(Math.random() * wordList.length)];
     word = randomWord.word;
 
-    // If word chars >= 5 then max guess = 8 else max guess = 6
-    maxGuesses = word.length >= 5 ? 8 : 6;
+    // If word chars >= 6 then max guess = 7 else max guess = 5
+    maxGuesses = word.length >= 6 ? 7 : 5;
     incorrectLetters = [];
     correctLetters = [];
     hintTag.innerText = randomWord.hint;
@@ -45,15 +45,16 @@ function handleInput(e) {
     const key = e.target.value.toLowerCase();
     if (key.match(/^[a-z]+$/i) && !incorrectLetters.includes(`${key}`) && !correctLetters.includes(`${key}`)) {
         // Check if the letter is in word
-        if (word.includes(key)) {
-            // Update correct guess
-            for (let i = 0; i < word.length; i++) {
-                if (word[i] === key) {
-                    inputs.querySelectorAll("input")[i].value += key;
-                }
+        let foundLetter = false;
+        for (let i = 0; i < word.length; i++) {
+            if (word[i] === key) {
+                inputs.querySelectorAll("input")[i].value = key;
+                correctLetters.push(key);
+                foundLetter = true;
             }
-            correctLetters.push(key); 
-        } else {
+        }
+        
+        if (!foundLetter) {
             // Update incorrect guess
             maxGuesses--;
             incorrectLetters.push(`${key}`);
