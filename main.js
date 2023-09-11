@@ -14,6 +14,7 @@ let word,
     maxGuesses;
 
 function newGame() {
+
     // Hide the word hint at the beginning of the game.
     hintText.style.display = "none";
 
@@ -41,6 +42,7 @@ function newGame() {
 
 // Handle user input and update game stats
 function handleInput(e) {
+    
     // Ignore non-letters input and letters that have already guessed
     const key = e.target.value.toLowerCase();
     if (key.match(/^[a-z]+$/i) && !incorrectLetters.includes(`${key}`) && !correctLetters.includes(`${key}`)) {
@@ -101,3 +103,5 @@ inputs.addEventListener("click", () => typeInput.focus());
 document.addEventListener("keydown", () => typeInput.focus());
 
 newGame();
+
+
